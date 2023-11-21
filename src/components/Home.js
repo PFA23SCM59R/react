@@ -206,7 +206,7 @@ export default function Home() {
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-            Timeseries Forecasting
+            Timeseries Forecastings
           </Typography>
         </Toolbar>
       </AppBar>
