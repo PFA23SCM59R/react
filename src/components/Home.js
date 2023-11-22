@@ -352,15 +352,13 @@ export default function Home() {
                 />
               </div>
             </div>
-            {/* Rendering Timeseries Forecasting of Closed Issues using Tensorflow and
-                Keras LSTM  */}
+            
             <div>
               <Divider
                 sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
               />
               <Typography variant="h5" component="div" gutterBottom>
-                Timeseries Forecasting of Closed Issues using Tensorflow and
-                Keras LSTM based on past month
+                StatsModel Forecasting of Closed Issues using StatsModel based on past month
               </Typography>
 
               <div>
@@ -369,21 +367,21 @@ export default function Home() {
                 </Typography>
                 {/* Render the model loss image for closed issues  */}
                 <img
-                  src={githubRepoData?.closedAtImageUrls?.model_loss_image_url}
+                  src={githubRepoData?.closedAtImageUrls?.model_loss_image_stats_url}
                   alt={"Model Loss for Closed Issues"}
                   loading={"lazy"}
                 />
               </div>
               <div>
                 <Typography component="h4">
-                  LSTM Generated Data for Closed Issues
+                  Generated Data for Closed Issues
                 </Typography>
                 {/* Render the LSTM generated image for closed issues */}
                 <img
                   src={
-                    githubRepoData?.closedAtImageUrls?.lstm_generated_image_url
+                    githubRepoData?.closedAtImageUrls?.lstm_generated_image_stats_url
                   }
-                  alt={"LSTM Generated Data for Closed Issues"}
+                  alt={"StatsModel Generated Data for Closed Issues"}
                   loading={"lazy"}
                 />
               </div>
@@ -393,7 +391,54 @@ export default function Home() {
                 </Typography>
                 {/* Render the all issues data image for closed issues*/}
                 <img
-                  src={githubRepoData?.closedAtImageUrls?.all_issues_data_image}
+                  src={githubRepoData?.closedAtImageUrls?.all_issues_data_image_stats}
+                  alt={"All Issues Data for Closed Issues"}
+                  loading={"lazy"}
+                />
+              </div>
+              
+              
+            </div>
+
+            <div>
+              <Divider
+                sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
+              />
+              <Typography variant="h5" component="div" gutterBottom>
+                Facebook/Prophet Forecasting of Closed Issues based on past month
+              </Typography>
+
+              <div>
+                <Typography component="h4">
+                  Model Loss for Closed Issues
+                </Typography>
+                {/* Render the model loss image for closed issues  */}
+                <img
+                  src={githubRepoData?.closedAtImageUrls?.model_loss_image_prophet_url}
+                  alt={"Model Loss for Closed Issues"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  Prophet Generated Data for Closed Issues
+                </Typography>
+                {/* Render the LSTM generated image for closed issues */}
+                <img
+                  src={
+                    githubRepoData?.closedAtImageUrls?.lstm_generated_image_prophet_url
+                  }
+                  alt={"Prophet Generated Data for Closed Issues"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  All Issues Data for Closed Issues
+                </Typography>
+                {/* Render the all issues data image for closed issues*/}
+                <img
+                  src={githubRepoData?.closedAtImageUrls?.all_issues_data_image_prophet}
                   alt={"All Issues Data for Closed Issues"}
                   loading={"lazy"}
                 />
