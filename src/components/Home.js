@@ -121,10 +121,28 @@ export default function Home() {
   const [githubRepoData, setGithubData] = useState([]);
 
   const [reposLineChartData, setReposLineChartData] = useState([]);
-  // Updates the repository to newly selected repository
+
   const eventHandler = (repo) => {
     setRepository(repo);
   };
+  
+  function extractDate(entry) {
+    return new Date(entry[0] + "-01");
+  }
+
+  function getLastTwoMonthsData(array) {
+    let sortedArray = array?.sort((a, b) => extractDate(a) - extractDate(b)) ?? [];
+    return sortedArray.slice(-2);
+  }
+
+  const [sortedData, setSortedData] = useState([]);
+
+  React.useEffect(() => {
+    let lastTwoMonthsClosed = getLastTwoMonthsData(githubRepoData?.closed);
+    let lastTwoMonthsCreated = getLastTwoMonthsData(githubRepoData?.created);
+    setSortedData({ "closed": lastTwoMonthsClosed, "created": lastTwoMonthsCreated });
+  }, [githubRepoData]);
+
 
   /* 
   Fetch the data from flask microservice on Component load and on update of new repository.
@@ -206,7 +224,7 @@ export default function Home() {
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-            Timeseries Forecastings
+            Timeseries Forecasting
           </Typography>
         </Toolbar>
       </AppBar>
@@ -278,12 +296,12 @@ export default function Home() {
             {/* Render barchart component for a monthly created issues for a selected repositories*/}
             <BarCharts
               title={`Monthly Created Issues for ${repository.value} in last 2 month`}
-              data={githubRepoData?.created}
+              data={sortedData?.created}
             />
             {/* Render barchart component for a monthly created issues for a selected repositories*/}
             <BarCharts
               title={`Monthly Closed Issues for ${repository.value} in last 2 month`}
-              data={githubRepoData?.closed}
+              data={sortedData?.closed}
             />
             <Divider
               sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}

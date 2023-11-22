@@ -1,13 +1,13 @@
 steps:
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/tensorflow-405819/tensorflow', '.']
+  args: ['build', '-t', 'gcr.io/react-405824/react', '.']
 # Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/tensorflow-405819/tensorflow']
+  args: ['push', 'gcr.io/react-405824/react']
 # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['run', 'deploy', 'tensorflow', '--image', 'gcr.io/tensorflow-405819/tensorflow', '--region', 'us-central1', '--platform', 'managed','--port','80']
+  args: ['run', 'deploy', 'react', '--image', 'gcr.io/react-405824/react', '--region', 'us-central1', '--platform', 'managed','--port','3000']
 images:
-- gcr.io/tensorflow-405819/tensorflow
+- gcr.io/react-405824/reacts
